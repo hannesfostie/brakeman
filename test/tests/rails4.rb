@@ -468,6 +468,13 @@ class Rails4Tests < Test::Unit::TestCase
       :confidence => 1,
       :relative_path => "app/controllers/friendly_controller.rb",
       :user_input => nil
+
+    assert_no_warning :type => :warning,
+      :warning_type => "Mass Assignment",
+      :line => 44,
+      :message => /^Unprotected mass assignment near line 44/,
+      :confidence => 0,
+      :relative_path => "app/controllers/friendly_controller.rb"
   end
 
   def test_only_desired_attribute_is_ignored

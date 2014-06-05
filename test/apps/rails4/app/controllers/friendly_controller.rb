@@ -40,6 +40,10 @@ class FriendlyController
     params.permit!
   end
 
+  def inline_permit
+    User.new(params.permit!)
+  end
+
   def sql_with_exec
     User.connection.select_values <<-SQL
       SELECT id FROM collection_items
